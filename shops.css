@@ -2,13 +2,12 @@
 @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
 
 /* Global */
-html {
+#header {
       min-height: 100%;
       overflow: hidden;
 }
 
 body {
-      height: calc(100vh - 8em);
       padding: 4em;
       font-size: medium;
       color: rgba(255, 255, 255, 0.75);
@@ -32,7 +31,7 @@ nav{
       margin: auto;
 }
 
-a{
+a {
       background-color: rgb(23, 23, 23);
       position: relative;
       text-decoration: none;
