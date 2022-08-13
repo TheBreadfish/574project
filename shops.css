@@ -1,0 +1,51 @@
+/* Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+/* Global */
+html {
+      min-height: 100%;
+      overflow: hidden;
+}
+
+body {
+      height: calc(100vh - 8em);
+      padding: 4em;
+      font-size: medium;
+      color: rgba(255, 255, 255, 0.75);
+      font-family: 'Anonymous Pro', monospace;
+      background-color: rgb(25, 25, 25);
+}
+
+.line {
+      font-size: 100%;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;transform: translateY(-50%);
+}
+
+nav{
+      height: 100vh;
+      width: 60vw;
+      min-width: 600px;
+      display: flex;
+      justify-content: space-around;
+      margin: auto;
+}
+
+a{
+      background-color: rgb(23, 23, 23);
+      position: relative;
+      text-decoration: none;
+      font-family: 'Anonymous Pro', monospace;
+      color: rgba(255, 255, 255, 0.75);
+      letter-spacing: 0.5px;
+
+}
+
+a:hover{
+      color: rgba(255, 255, 255, 1);
+}
+
+a:hover:after{
+      width: 100%;
+}
