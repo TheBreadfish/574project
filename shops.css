@@ -31,7 +31,7 @@ nav{
       margin: auto;
 }
 
-a {
+#fivefourseven {
       background-color: rgb(23, 23, 23);
       position: relative;
       text-decoration: none;
@@ -47,4 +47,8 @@ a:hover{
 
 a:hover:after{
       width: 100%;
+}
+
+a {
+      cursor: pointer;
 }
