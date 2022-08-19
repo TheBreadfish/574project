@@ -1,12 +1,9 @@
-Shops = []
+  let Shops = [];
 
-function newShop(name, description, owner, datecreated) {
-    let newShop = new Shop(name, description, datecreated, owner)
+function newShop(name, description, owner, datecreated, keywords, loc, items, eta, stock, meta) {
+    let newShop = new Shop(name, description, datecreated, owner, JSON.parse(keywords), loc, JSON.parse(items), eta, stock, meta);
 
-    Shops.unshift(newShop)
-
-    console.log(Shops)
-    console.log(newShop)
+    Shops.unshift(newShop);
 }
 
 function capFirstLetter(string) {
@@ -19,68 +16,107 @@ function capFirstLetter(string) {
 
 const date = new Date();
 
-/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------
 
-/*
+
 ex: newShop("name", "description", "owner", "datecreated")
 */
 
 // Some example shops: 
-//(use genCode("name", "desc", "owner") to make new lines)
+// (use the genCode() function to make new lines)
 
 
 
-newShop("3rd Printing", "Get custom 3d prints.", "joe ...MAMA", "1")
+newShop("shop name this is a shop name yes hello hi", "description", "owner", insertCommas("1660602333316"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta");
 
-newShop("Jeff's Art", "Get some art, paintings, ect...", "jeffrey bezos", "0")
+newShop("shop name this is a shop name yes hello hi", "description", "owner", insertCommas("1660602333316"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta");
 
-newShop("name", "desc", "owner", insertCommas("1660360227138"))
+newShop("shop name this is a shop name yes hello hi", "description", "owner", insertCommas("1660602333316"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta");
 
+newShop("shop name this is a shop name yes hello hi", "description", "owner", insertCommas("1660602333316"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta");
+
+newShop("name", "description", "owner", insertCommas("1660846734070"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta")
+
+newShop("name", "description", "owner", insertCommas("1660846734070"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta")
+
+newShop("name", "description", "owner", insertCommas("1660846734070"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta")
+
+newShop("name", "description", "owner", insertCommas("1660846734070"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta")
+
+newShop("name", "description", "owner", insertCommas("1660846734070"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta")
+
+newShop("name", "description", "owner", insertCommas("1660846734070"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta")
+
+newShop("name", "description", "owner", insertCommas("1660846734070"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta")
+
+newShop("name", "description", "owner", insertCommas("1660846734070"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta")
+
+newShop("name", "description", "owner", insertCommas("1660846734070"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta")
 
 /*
 Do NOT paste the new shop function below this comment
-*/
 
-/*-------------------------------------------------------------*/
+-------------------------------------------------------------*/
 
 for(let i = 0; i < Shops.length; i++) {
 
-    let liName = document.createElement("h3")
-    liName.innerText = Shops[i].name
+    let liName = document.createElement("a");
+    liName.innerHTML = Shops[i].name + "<br>";
+    liName.style.fontSize = "x-large";
 
-    let liDescription = document.createElement("p")
-    liDescription.innerText = Shops[i].description 
+    liName.addEventListener("click", function() {shopOpen(i)});
 
-    let liOwner = document.createElement("p")
-    liOwner.innerText = capFirstLetter(Shops[i].owner)
+    let liMeta = document.createElement("span");
+    liMeta.innerHTML = Shops[i].meta + "<br>";
 
-    let liDateCreated = document.createElement("p")
-    liDateCreated.innerText = Shops[i].datecreated
-    liDateCreated.style.fontSize = "xx-small"
+    let liOwner = document.createElement("span");
+    liOwner.innerHTML = capFirstLetter(Shops[i].owner);
 
-
-    let li = document.createElement("li")
-
-
-
-    li.appendChild(liName)
-    li.appendChild(liDescription)
-    li.appendChild(liOwner)
-    li.appendChild(liDateCreated)
-
-    console.log(li)
+    let liDateCreated = document.createElement("span");
+    liDateCreated.innerText = Shops[i].datecreated + "<br><br>";
+    liDateCreated.style.fontSize = "xx-small";
+    liDateCreated.style.display = "none";
 
 
 
-    const ul = document.getElementById("shops")
+    let li = document.createElement("li");
 
-    ul.appendChild(li)
+
+    li.appendChild(liName);
+    li.appendChild(liMeta);
+    li.appendChild(liOwner);
+    li.appendChild(liDateCreated);
+
+
+
+    const ul = document.getElementById("shops");
+
+    ul.appendChild(li);
 }
 
-function genCode(name, desc, owner) {
-    return 'newShop("'+name+'", "'+desc+'", "'+owner+'", insertCommas("'+date.getTime()+'"))'
+function genCode(name, desc, owner, keywords, loc, items, eta, stock, meta) {
+    return 'newShop("'+name+'", "'+desc+'", "'+owner+'", insertCommas("'+date.getTime()+'"), '+'"'+keywords+'", "'+loc+'", "'+items+'", "'+eta+'", "'+stock+'", "'+meta+'")';
 
-    //newShop("name", "desc", "owner", "date")
+    //newShop("name", "desc", "owner", "datecreated", '["keywords"]', "loc", '["items"]', '{timeMin:"min", timeMax:"max", unit:"unit"', "stock", "meta");
 }
 
-console.log(genCode("name", "desc", "owner"))
+// console.log(genCode("name", "description", "owner", "['keyword1', 'keyword2']", "location", "['item1','item2']", "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta"));
+
+
+
+function shopOpen(i) {
+  console.log(i)
+
+  let shopContent = `
+  <k>`+Shops[i].name+`</k>
+  <br>
+  <span style="font-size: x-large">`+Shops[i].owner+`</span>
+  <hr><br><br>
+  <span>`+Shops[i].description+`</span>
+  `
+
+
+  const content = document.getElementById("content")
+
+  content.innerHTML = "<br><br><br><br>" + shopContent
+}
