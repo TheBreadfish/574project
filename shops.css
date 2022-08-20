@@ -52,3 +52,16 @@ a:hover:after{
 a {
       cursor: pointer;
 }
+
+#searchBar {
+      width: 630px;
+      height: 30px;
+      padding: 10px;
+      background-color: rgb(41, 41, 41);
+
+      color: rgba(255, 255, 255, 0.75);
+      font-family: 'Anonymous Pro', monospace;
+
+      border-radius: 50px;
+      border: none;
+}
