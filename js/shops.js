@@ -36,7 +36,7 @@ ex: newShop("name", "description", "owner", "datecreated")
 
 
 
-newShop("shop name this is a shop name yes hello hi", "description", "owner", insertCommas("1660602333316"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta");
+newShop("Food & Panther Cash", "Good quality food. I have sodas, candy, panther cash, and more. Thank you for visting my shop, I hope you buy some drinks or panther cash! <br><br><br>:)", "John Cena", insertCommas("1660602333316"), '["Candy", "Drinks", "Soda", "Panther", "Cash", "this keyword is a keyword only for testing and yeah :)"]', "Under the big tent in front of the school", '["Sodas","Candy","Panther Cash"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "15-20", "Good drinks, candy, and panther cash");
 
 newShop("shop name this is a shop name yes hello hi", "description", "owner", insertCommas("1660602333316"), '["keyword1", "keyword2"]', "location", '["item1","item2"]', "{timeMin:'1', timeMax:'2', unit:'unit'}", "stock", "meta");
 
@@ -70,7 +70,12 @@ Do NOT paste the new shop function below this comment
 for(let i = 0; i < Shops.length; i++) {
 
     let liName = document.createElement("a");
-    liName.innerHTML = Shops[i].name + "<br>";
+    let liNameKeywords = '<span style="display: none;">';
+    for(let l = 0; l < Shops[i].keywords.length; l++) {
+      liNameKeywords += Shops[i].keywords[l]+" "
+    }
+    liNameKeywords += '</span><br>'
+    liName.innerHTML = Shops[i].name+liNameKeywords
     liName.style.fontSize = "x-large";
 
     liName.addEventListener("click", function() {shopOpen(i)});
@@ -122,9 +127,15 @@ function shopOpen(i) {
   <br>
   <k>`+Shops[i].name+`</k>
   <br>
-  <span style="font-size: x-large">`+Shops[i].owner+`</span>
+  <span style="font-size: x-large">`+capFirstLetter(Shops[i].owner)+`</span>
   <hr><br><br>
   <span>`+Shops[i].description+`</span>
+  <br><br><br><hr><br>
+  <span> Meet `+capFirstLetter(Shops[i].owner)+` at `+Shops[i].loc.toLowerCase()+` to trade!</span>
+  <br><br>
+  <span style="font-size: small;"> Items: `+Shops[i].items+`</span>
+  <br>
+  <span style="font-size: small;"> Total stock: `+Shops[i].stock+`</span>
   `
 
 
