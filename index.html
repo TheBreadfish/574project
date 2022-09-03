@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="index.css">
+  <title>T5p PASSWORD</title>
+
+  <script src="https://hashing.pablopicasso1.repl.co/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <style>
+    :root {
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      margin: 30px;
+    }
+
+    footer {
+      font-size: 12px;
+      position: fixed;
+      bottom: 5%;
+      left: 42%;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Please enter password</p>
+  <form>
+    <input type="password" id="password" autocomplete="on">
+  </form><br>
+  <button onclick="encrypt()">Open</button>
+  <p id="output"></p>
+  <footer>Made by <a id="beans" href="https://billwurtz.com/drinkbeans.mp3" style="color:rgba(255,255,255,0.75);">insert ip here</a> (is this you?)</footer>
+
+  <script>
+    function encrypt() {
+      const encodedString = hash(document.getElementById("password").value)
+
+      const key = "51384348";
+
+      console.log(key)
+
+      if (encodedString == key) {
+        location.href = 'webpage.html';
+      } else {
+        document.querySelector('#output').innerHTML = 'That is not the password!';
+      }
+      return (ans);
+    }
+
+    $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
+  data = data.trim().split('\n').reduce(function(obj, pair) {
+    pair = pair.split('=');
+    return obj[pair[0]] = pair[1], obj;
+  }, {});
+  console.log(data.ip)
+  document.getElementById('beans').innerHTML = data.ip + ' in the ' + data.loc + '.'
+});
+
+  </script>
+</body>
+
+</html>
